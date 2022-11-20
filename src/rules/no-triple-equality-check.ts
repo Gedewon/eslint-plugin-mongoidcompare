@@ -13,7 +13,7 @@ const isBothSideMongoIdTypes = (leftNodeType:ts.Type,rightNodeType:ts.Type,check
 }
 
 
-const rule:TSESLint.RuleModule<"noTripleEqualityCheck", never[], {
+const rule:TSESLint.RuleModule<"noTripleEqualityCheck" , never[], {
   BinaryExpression(node: TSESTree.BinaryExpression): void;
 }> = createRule({
   create(context:Readonly<
@@ -21,7 +21,7 @@ const rule:TSESLint.RuleModule<"noTripleEqualityCheck", never[], {
 >) {
     return {
       BinaryExpression(node:TSESTree.BinaryExpression) {
-        
+
         const parserServices = ESLintUtils.getParserServices(context);
         const checker = parserServices.program.getTypeChecker();
         // 2. Find the backing TS node for the ES node, then that TS type
@@ -39,7 +39,8 @@ const rule:TSESLint.RuleModule<"noTripleEqualityCheck", never[], {
           if(isBothSideMongoIdTypes(leftNodeType,rightNodeType,checker)){ 
              context.report({
               node, 
-              messageId: "noTripleEqualityCheck"
+              messageId: "noTripleEqualityCheck",   
+        
              })
           }
       },
@@ -54,7 +55,7 @@ const rule:TSESLint.RuleModule<"noTripleEqualityCheck", never[], {
         requiresTypeChecking: false,
     },
     messages: {
-      noTripleEqualityCheck: `Don't use triple equality check on MongoDB id's.`,
+      noTripleEqualityCheck: `Don't use triple equality check on MongoDB id's. (use .equals()) to get expected result.`,
     },
     type: 'problem',
     schema: [],
