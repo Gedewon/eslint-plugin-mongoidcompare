@@ -46,4 +46,8 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-See the `docs` directory.
+See the `src` directory. index.ts have the the rule set's.
+
+## Future Work 
+
+implement fix a function that applies a [fix](https://eslint.org/docs/latest/developer-guide/working-with-rules#applying-fixes) to resolve the problem.
