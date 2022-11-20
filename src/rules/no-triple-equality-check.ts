@@ -35,7 +35,7 @@ const rule:TSESLint.RuleModule<"noTripleEqualityCheck" , never[], {
 
         const leftNodeType = checker.getTypeAtLocation(originalLeftNode);
         const rightNodeType = checker.getTypeAtLocation(originalRightNode);
-     
+
           if(isBothSideMongoIdTypes(leftNodeType,rightNodeType,checker)){ 
              context.report({
               node, 
