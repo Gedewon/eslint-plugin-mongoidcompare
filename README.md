@@ -12,6 +12,15 @@ You'll first need to install [ESLint](http://eslint.org):
 ```
 $ npm i eslint --save-dev
 ```
+Since We have used a rule which requires parserServices to be generated. You must therefore provide a value for the "parserOptions.project"
+```json
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+}
+```
 
 Next, install `eslint-plugin-mongoidcompare`:
 
