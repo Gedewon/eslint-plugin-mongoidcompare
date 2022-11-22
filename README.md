@@ -55,7 +55,7 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-See the `src` directory. index.ts have the the rule set's.
+Take a look at  [doc.md](https://github.com/Gedewon/eslint-plugin-mongoidcompare/blob/main/doc.md) to see when we would want to use this linting rule.
 
 ## Future Work 
 
