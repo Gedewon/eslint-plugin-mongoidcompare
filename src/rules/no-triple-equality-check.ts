@@ -3,7 +3,7 @@ import { RuleModule } from '@typescript-eslint/utils/dist/ts-eslint';
 import * as ts from 'typescript';
 
 const createRule = ESLintUtils.RuleCreator(
-  name => `https://example.com/rule/${name}`,
+  name => `https://github.com/Gedewon/eslint-plugin-mongoidcompare/blob/main/doc.md`,
 );
 
 const isBothSideMongoIdTypes = (leftNodeType:ts.Type,rightNodeType:ts.Type,checker:ts.TypeChecker):boolean=>{ 
