@@ -59,8 +59,7 @@
    
   },
   "include": [
-    "file.ts",
-    "**/src/**/*.ts",
+    "**/src/rules/*.ts",
     "**/test/**/*.ts",
     // etc
   ],
