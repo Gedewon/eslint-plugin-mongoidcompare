@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-mongoidcompare",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "The rule should search the abstract syntax tree sending a warning for instances of the operator === where both the left-hand-side and right-hand-side could be ObjectId",
   "main": "lib/index.js",
   "scripts": {
