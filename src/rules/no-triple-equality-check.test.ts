@@ -1,46 +1,53 @@
-import { ESLintUtils } from '@typescript-eslint/utils';
-import rule from './no-triple-equality-check';
+import { ESLintUtils } from '@typescript-eslint/utils'
+import rule from './no-triple-equality-check'
 import path from 'path'
-
 
 const ruleTester = new ESLintUtils.RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.json',
-    tsconfigRootDir: path.join(__dirname,'../../'),
+    project: './tsconfig.test.json',
+    tsconfigRootDir: path.join(__dirname, '../../'),
   },
-});
+})
 
 ruleTester.run('no-triple-equality-check', rule, {
   valid: [
-    {   code:`
+    {
+      code: `
     import {ObjectId} from 'mongodb';
     const equalOk = (id1: ObjectId | string | null, id2: string | null) => {
                 return id1 === id2;
-            }`
+            }`,
     },
     {
-      code:`
+      code: `
       const x = new ObjectId()
       const y = new ObjectId(x.toString())
-      console.log(x.equals(y))`
-    }],
+      console.log(x.equals(y))`,
+    },
+    {
+      code: `
+      import {ObjectId} from 'mongodb';
+      const x = new ObjectId()
+      console.log(x instanceof ObjectId)`,
+    },
+  ],
   invalid: [
     {
-    code:`
+      code: `
     import {ObjectId} from 'mongodb';
     const equalBad = (id1: ObjectId | null, id2: ObjectId | 2 | false) => {
       return id1 === id2;
     }`,
-    errors:[{messageId:"noTripleEqualityCheck"}]
-  },
-  {
-    code:`
+      errors: [{ messageId: 'noTripleEqualityCheck' }],
+    },
+    {
+      code: `
     import {ObjectId} from 'mongodb';
     const x = new ObjectId()
     const y = new ObjectId(x.toString())
     console.log(x === y)`,
-    errors:[{messageId:"noTripleEqualityCheck"}]
-  }
-],
-});
+      errors: [{ messageId: 'noTripleEqualityCheck' }],
+    },
+  ],
+})
